@@ -1,0 +1,552 @@
+{
+    "configs": [
+	    {
+            "name": "descr-occ-accept-fix-1",
+			"config": {
+                "corpusCol": "description",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 30000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-fox-1",
+			"config": {
+                "corpusCol": "description",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 30000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens",
+                "foxWeight": 0.90
+            }
+        },
+        {
+            "name": "descr-occ-fox-2",
+			"config": {
+                "corpusCol": "description",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 30000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens",
+                "foxWeight": 0.75
+            }
+        },
+        {
+            "name": "descr-occ-fox-3",
+			"config": {
+                "corpusCol": "description",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 30000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens",
+                "foxWeight": 0.50
+            }
+        },
+        {
+            "name": "descr-occ-fox-4",
+			"config": {
+                "corpusCol": "description",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 30000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens",
+                "foxWeight": 0.25
+            }
+        },
+        {
+            "name": "descr-occ-accept-fix-2",
+			"config": {
+                "corpusCol": "description",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 50000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-default-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 50000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "title-occ-default-fix",
+            "config": {
+                "corpusCol": "title",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-words-1-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 30000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-words-2-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 20000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-words-3-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-words-4-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 8000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-words-5-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 6000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-words-6-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 4000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-words-7-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 2000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-dense-1-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 16,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-dense-2-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-dense-3-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 30000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-dense-4-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 50000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-dense-5-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 64,
+                "denseSize2": 32,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 50000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-dense-6-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 64,
+                "denseSize2": 32,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-pen-1-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.001,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "descr-occ-pen-2-fix",
+            "config": {
+                "corpusCol": "description",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.1,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "title-occ-words-1-fix",
+            "config": {
+                "corpusCol": "title",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "title-occ-words-2-fix",
+            "config": {
+                "corpusCol": "title",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 8000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "title-occ-words-3-fix",
+            "config": {
+                "corpusCol": "title",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 6000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "title-occ-words-4-fix",
+            "config": {
+                "corpusCol": "title",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 4000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "title-occ-words-5-fix",
+            "config": {
+                "corpusCol": "title",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 2000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "title-occ-dense-1-fix",
+            "config": {
+                "corpusCol": "title",
+                "denseSize1": 16,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "title-occ-dense-2-fix",
+            "config": {
+                "corpusCol": "title",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "title-occ-pen-1-fix",
+            "config": {
+                "corpusCol": "title",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.001,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        },
+        {
+            "name": "title-occ-pen-2-fix",
+            "config": {
+                "corpusCol": "title",
+                "denseSize1": 8,
+                "denseSize2": 8,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.1,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        }
+    ]
+}

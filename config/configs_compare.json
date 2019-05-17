@@ -1,0 +1,38 @@
+{
+    "configs": [
+        {
+            "name": "description-lstm-fix-compare",
+            "config": {
+                "corpusCol": "description",
+                "lstmSize": 32,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "sequence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens",
+                "maxSeqLen": 50
+            }
+        },
+	    {
+            "name": "descr-occ-fix-compare",
+			"config": {
+                "corpusCol": "description",
+                "denseSize1": 32,
+                "denseSize2": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "occurrence",
+                "numWords": 10000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens"
+            }
+        }
+    ]
+}

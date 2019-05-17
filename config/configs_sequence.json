@@ -1,0 +1,55 @@
+{
+    "configs": [
+        {
+            "name": "descr-lstm-default",
+            "config": {
+                "corpusCol": "description",
+                "lstmSize": 32,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "sequence",
+                "numWords": 1000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens",
+                "maxSeqLen": 50
+            }
+        },
+        {
+            "name": "descr-lstm-size",
+            "config": {
+                "corpusCol": "description",
+                "lstmSize": 16,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "sequence",
+                "numWords": 1000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens",
+                "maxSeqLen": 50
+            }
+        },
+        {
+            "name": "title-lstm-default",
+            "config": {
+                "corpusCol": "title",
+                "lstmSize": 32,
+                "dropoutRate": 0,
+                "kernelRegPenalty": 0.01,
+                "method": "sequence",
+                "numWords": 1000,
+                "sourceCol": "source",
+                "sourceIdCol": "sourceId",
+                "sourceIdVectorCol": "sourceIdVector",
+                "tokenVectorCol": "tokenVector",
+                "tokensCol": "tokens",
+                "maxSeqLen": 50
+            }
+        }
+    ]
+}

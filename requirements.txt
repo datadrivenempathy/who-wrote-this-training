@@ -1,0 +1,7 @@
+numpy==1.15.4
+Keras==2.2.4
+gensim==3.7.1
+pandas==0.24.1
+textblob==0.15.3
+beautifulsoup4==4.7.1
+scikit_learn==0.21.1

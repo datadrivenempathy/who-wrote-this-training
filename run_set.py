@@ -52,19 +52,22 @@ import sys
 
 import harness_util
 
-NUM_ARGS = 1
-USAGE_STR = 'python run_set.py [json_file]'
+NUM_ARGS = 2
+USAGE_STR = 'python run_set.py [json_file] [db loc]'
 
 
-def run_configuration(contents, verbose=True):
+def run_configuration(contents, db_loc, verbose=True):
     """Run a set of configurations.
 
     Args:
         contents: Dictionary which has a 'contents' key whose list value contains configurations
             that should be run.
+        db_loc: The database from which article information should be read.
         verbose: Flag indicating if status updates should be printed. Defaults to true.
     """
     harness_factory = harness_util.TemplateHarnessFactory()
+
+    project_name = contents.get('project', 'who-wrote-this')
 
     for next_named_config in contents['configs']:
 
@@ -75,20 +78,21 @@ def run_configuration(contents, verbose=True):
                 print('>>> Running ' + name)
 
             config = named_config['config']
-            harness = harness_factory.build(config)
-            harness.run('who-wrote-this', name, config)
+            harness = harness_factory.build(config, db_loc=db_loc)
+            harness.run(project_name, name, config)
 
         process = multiprocessing.Process(target=process, args=(next_named_config,))
         process.start()
         process.join()
 
 
-def run_file(json_file_path, verbose=True):
+def run_file(json_file_path, db_loc, verbose=True):
     """Run all of the configurations found within a file.
 
     Args:
         json_file_path: The string path to the file with a series of configurations with which a
             training harness should be run.
+        db_loc: The database from which article information should be read.
         verbose: Flag indicating if status updates should be printed. Defaults to true.
     """
     if verbose:
@@ -97,7 +101,7 @@ def run_file(json_file_path, verbose=True):
     with open(json_file_path) as f:
         contents = json.load(f)
 
-    run_configuration(contents, verbose=verbose)
+    run_configuration(contents, db_loc, verbose=verbose)
 
 
 def main():
@@ -107,7 +111,9 @@ def main():
         return
 
     json_file_path = sys.argv[1]
+    db_loc = sys.argv[2]
 
+    run_file(json_file_path, db_loc)
 
 
 if __name__ == '__main__':

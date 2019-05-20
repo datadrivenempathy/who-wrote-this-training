@@ -1,0 +1,15 @@
+{
+    "corpusCol": "description",
+    "denseSize1": 32,
+    "denseSize2": 16,
+    "dropoutRate": 0,
+    "kernelRegPenalty": 0.01,
+    "method": "occurrence",
+    "numWords": 30000,
+    "sourceCol": "source",
+    "sourceIdCol": "sourceId",
+    "sourceIdVectorCol": "sourceIdVector",
+    "tokenVectorCol": "tokenVector",
+    "tokensCol": "tokens",
+    "useWandb": false
+}

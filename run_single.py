@@ -40,6 +40,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import json
 import sqlite3
+import sys
 
 import keras
 import numpy
@@ -47,11 +48,11 @@ import pandas
 
 import harness_util
 
-NUM_ARGS = 4
-USAGE_STR = 'python run_single.py [path to json config] [project name] [run name] [path to sqlite]'
+NUM_ARGS = 5
+USAGE_STR = 'python run_single.py [path to json config] [project name] [run name] [path to sqlite] [write predictions]'
 
 
-def run_config(config, project_name, run_name, conn):
+def run_config(config, project_name, run_name, conn, write_predictions):
     """Train an article authorship classifier and save predictions.
 
     Args:
@@ -59,6 +60,7 @@ def run_config(config, project_name, run_name, conn):
         project_name: The name of the project. Will be used in wandb if enabled.
         run_name: The name of the run. Will be used in wandb if enabled.
         conn: DB API v2 compliant database connection.
+        write_predictions: Flag indicating if predictions should be written to the db.
     """
     harness_factory = harness_util.TemplateHarnessFactory()
     harness = harness_factory.build(config, conn=conn)
@@ -66,6 +68,9 @@ def run_config(config, project_name, run_name, conn):
 
     target_frame = results.get_data_frame()
     model = results.get_model()
+
+    if not write_predictions:
+        return
 
     vector_frame_col = target_frame[config['tokenVectorCol']]
     vector_array = numpy.array(vector_frame_col.tolist())
@@ -121,10 +126,15 @@ def main():
     project_name = sys.argv[2]
     run_name = sys.argv[3]
     conn_path = sys.argv[4]
+    write_predictions = sys.argv[5].lower() == 't'
 
-    with open(conn_path) as f:
+    with open(config_path) as f:
         config = json.load(f)
 
     conn = sqlite3.connect(conn_path)
 
-    run_config(config, project_name, run_name, conn)
+    run_config(config, project_name, run_name, conn, write_predictions)
+
+
+if __name__ == '__main__':
+    main()

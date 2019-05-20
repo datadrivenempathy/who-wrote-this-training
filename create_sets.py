@@ -3,7 +3,7 @@
 Simple python script that assigns instances to train, test, and validation sets, reading from
 article_clean and outputing assignments into articles_clean_assigned.
 
----
+----
 
 Copyright 2019 Data Driven Empathy LLC
 

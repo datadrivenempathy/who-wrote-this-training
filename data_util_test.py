@@ -16,47 +16,28 @@ OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-import pandas
 import sqlite3
 import unittest
 
-import create_sets
+import pandas
+
+import data_util
+import test_util
 
 
-class CreateSetTests(unittest.TestCase):
+class DataUtilTest(unittest.TestCase):
 
-    def test_assign_to_sets_no_param(self):
-        self.assertRaises(RuntimeError, lambda: create_sets.assign_to_sets())
+    def setUp(self):
+        self.__conn = sqlite3.connect(':memory:')
+        test_util.build_example_set(self.__conn)
+        self.__conn.commit()
 
-    def test_assign_to_sets_connection(self):
-        conn = sqlite3.connect(':memory:')
-
-        in_frame = pandas.DataFrame([
-            {'source': 'test source', 'title': 'test title', 'description': 'test description'}
-        ] * 100)
-
-        in_frame.to_sql('articles_clean', conn)
-
-        create_sets.assign_to_sets(conn=conn)
-
-        out_frame = pandas.read_sql(
-            '''
-            SELECT
-                setAssignment,
-                count(1) AS cnt
-            FROM
-                articles_clean_assigned
-            GROUP BY
-                setAssignment
-            ''',
-            conn
-        )
-
-        count = out_frame[out_frame['setAssignment'] == 'train']['cnt'].sum()
-        self.assertTrue(count > 50)
-        self.assertTrue(count < 100)
-
-        cursor = conn.cursor()
+    def tearDown(self):
+        cursor = self.__conn.cursor()
         cursor.execute('DROP TABLE articles_clean_assigned')
-        cursor.execute('DROP TABLE articles_clean')
-        conn.commit()
+        self.__conn.commit()
+
+    def test_load_data(self):
+        loader = data_util.DataLoader(conn=self.__conn)
+        loaded_data = loader.load_data()
+        self.assertEquals(loaded_data.shape[0], 20)

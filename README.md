@@ -29,13 +29,16 @@ While these scripts can be imported to other Python code, typical usage will com
 
 **Running a single configuration**
 
-Running a single configuration will cause a new model to be trained and predictions using that model to be persisted into the input sqlite database. The required script can be run from the command line with `$ python run_single.py [path to json config] [project name] [run name] [path to sqlite] [write predictions]`. The arguments are as follows:
+Running a single configuration will cause a new model to be trained and predictions using that model to be persisted into the input sqlite database. The required script can be run from the command line with `$ python run_single.py [path to json config] [project name] [run name] [path to sqlite] [write predictions] [optional output path for accuracy] [optional output path for source performance] [optional path for predictions output]`. The arguments are as follows:
 
  - The path to the JSON configuration (as described below) with which to execute the pipeline.
  - The name of the project. This will be used with W&B if enabled.
  - The name to give to this specific execution. This will be used with W&B if enabled.
  - Path to the sqlite database from which article information will be read and into which predictions will be written.
  - If 't' (case-insensitive), will write predictions to SQLite database. Otherwise, predictions will not be persisted.
+ - Optional path to where accuracy statistics (test, train, and validation) should be written.
+ - Optional path to where source by source performance statistics (precision, recall) should be written.
+ - Optional path to where predictions should be written.
 
 An example of a single configuration file is at `config/selected_network.json`.
 

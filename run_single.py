@@ -1,4 +1,4 @@
-"""Utility to execute a single configuration.
+"""Utility to execute a single configuration with detailed results printed.
 
 Train an article authorship classifier and save predictions using a configuration given as a Python
 dictionary or path to JSON file. It expects JSON like:
@@ -50,11 +50,13 @@ import tabulate
 
 import harness_util
 
-NUM_ARGS = 5
-USAGE_STR = 'python run_single.py [path to json config] [project name] [run name] [path to sqlite] [write predictions]'
+MIN_NUM_ARGS = 5
+MAX_NUM_ARGS = 8
+USAGE_STR = 'python run_single.py [path to json config] [project name] [run name] [path to sqlite] [write predictions] [optional output path for accuracy] [optional output path for source performance] [optional path for predictions output]'
 
 
-def run_config(config, project_name, run_name, conn, write_predictions):
+def run_config(config, project_name, run_name, conn, write_predictions, output_path_accuracy=None,
+    output_path_source=None, predictions_output_path=None):
     """Train an article authorship classifier and save predictions.
 
     Args:
@@ -63,6 +65,12 @@ def run_config(config, project_name, run_name, conn, write_predictions):
         run_name: The name of the run. Will be used in wandb if enabled.
         conn: DB API v2 compliant database connection.
         write_predictions: Flag indicating if predictions should be written to the db.
+        output_path_accuracy: String path to which accuracy statistics should be written as CSV.
+            Pass None if no accuracy output should be written to a file. Defaults to None.
+        output_path_source: String path to which news source statistics should be written.
+            Pass None if no per source output should be written to a file. Defaults to None.
+        predictions_output_path: String path to which the predictions table should be written as
+            CSV. Pass None if the CSV should not be written. Defaults to None.
     """
     harness_factory = harness_util.TemplateHarnessFactory()
     harness = harness_factory.build(config, conn=conn)
@@ -127,18 +135,30 @@ def run_config(config, project_name, run_name, conn, write_predictions):
     print('**************************************')
     print('\n\n')
 
+    print('News Source Performance (Validation)')
+    print('--------------------------------------')
+    source_sql = get_sql('precision_and_recall_short.sql')
+    source_results = pandas.read_sql(source_sql, output_conn)
+    print(tabulate.tabulate(source_results, headers='keys', tablefmt='psql'))
+
+    print('\n\n')
+
     print('Accuracy')
     print('--------------------------------------')
     accuracy_sql = get_sql('accuracy.sql')
     accuracy_results = pandas.read_sql(accuracy_sql, output_conn)
     print(tabulate.tabulate(accuracy_results, headers='keys', tablefmt='psql'))
 
-    print('\n\n')
-    print('News Source Performance (Validation)')
-    print('--------------------------------------')
-    source_sql = get_sql('precision_and_recall_short.sql')
-    source_results = pandas.read_sql(source_sql, output_conn)
-    print(tabulate.tabulate(source_results, headers='keys', tablefmt='psql'))
+    print('\n\nSaving results to file system please wait...')
+
+    if output_path_source:
+        source_results.to_csv(output_path_source)
+
+    if output_path_accuracy:
+        accuracy_results.to_csv(output_path_accuracy)
+
+    if predictions_output_path:
+        output_frame.to_csv(predictions_output_path)
 
 
 def get_sql(filename):
@@ -156,9 +176,24 @@ def get_sql(filename):
     return contents
 
 
+def get_arg_or_none(index):
+    """Get the CLI argument if provided.
+
+    Args:
+        index: The integer index of the CLI argument.
+    Returns:
+        The provided argument or None if not given.
+    """
+    if len(sys.argv) > index:
+        return sys.argv[index]
+    else:
+        return None
+
+
 def main():
     """Run a single configuration through the pipeline using command line arguments."""
-    if len(sys.argv) != NUM_ARGS + 1:
+    num_args_given = len(sys.argv) - 1
+    if num_args_given < MIN_NUM_ARGS or num_args_given > MAX_NUM_ARGS:
         print(USAGE_STR)
         return
 
@@ -168,12 +203,25 @@ def main():
     conn_path = sys.argv[4]
     write_predictions = sys.argv[5].lower() == 't'
 
+    output_path_accuracy = get_arg_or_none(6)
+    output_path_source = get_arg_or_none(7)
+    predictions_output_path = get_arg_or_none(8)
+
     with open(config_path) as f:
         config = json.load(f)
 
     conn = sqlite3.connect(conn_path)
 
-    run_config(config, project_name, run_name, conn, write_predictions)
+    run_config(
+        config,
+        project_name,
+        run_name,
+        conn,
+        write_predictions,
+        output_path_accuracy=output_path_accuracy,
+        output_path_source=output_path_source,
+        predictions_output_path=predictions_output_path
+    )
 
 
 if __name__ == '__main__':

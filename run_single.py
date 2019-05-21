@@ -39,12 +39,14 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 import json
+import os
 import sqlite3
 import sys
 
 import keras
 import numpy
 import pandas
+import tabulate
 
 import harness_util
 
@@ -69,8 +71,7 @@ def run_config(config, project_name, run_name, conn, write_predictions):
     target_frame = results.get_data_frame()
     model = results.get_model()
 
-    if not write_predictions:
-        return
+    print('\n\nCalculating predictions...')
 
     vector_frame_col = target_frame[config['tokenVectorCol']]
     vector_array = numpy.array(vector_frame_col.tolist())
@@ -112,8 +113,47 @@ def run_config(config, project_name, run_name, conn, write_predictions):
     output_frame['nprScore'] = target_frame['NPR_prediction']
     output_frame['prediction'] = target_frame['prediction']
 
-    output_frame.to_sql('predictions', conn)
-    conn.commit()
+    if write_predictions:
+        output_conn = conn
+    else:
+        output_conn = sqlite3.connect(':memory:')
+
+    output_frame.to_sql('predictions', output_conn)
+    output_conn.commit()
+
+    print('\n\n')
+    print('**************************************')
+    print('**********     Results      **********')
+    print('**************************************')
+    print('\n\n')
+
+    print('Accuracy')
+    print('--------------------------------------')
+    accuracy_sql = get_sql('accuracy.sql')
+    accuracy_results = pandas.read_sql(accuracy_sql, output_conn)
+    print(tabulate.tabulate(accuracy_results, headers='keys', tablefmt='psql'))
+
+    print('\n\n')
+    print('News Source Performance (Validation)')
+    print('--------------------------------------')
+    source_sql = get_sql('precision_and_recall_short.sql')
+    source_results = pandas.read_sql(source_sql, output_conn)
+    print(tabulate.tabulate(source_results, headers='keys', tablefmt='psql'))
+
+
+def get_sql(filename):
+    """Get the SQL found within a filename.
+
+    Args:
+        filename: The filename of the file within the SQL folder whose contents should be returned.
+    Returns:
+        String SQL contents of the given filename.
+    """
+    parent_dir = os.path.dirname(os.path.realpath(__file__))
+    full_filename = os.path.join(parent_dir, 'sql', filename)
+    with open(full_filename) as f:
+        contents = f.read()
+    return contents
 
 
 def main():

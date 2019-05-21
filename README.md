@@ -151,6 +151,7 @@ This project is made available under the [MIT license](https://opensource.org/li
  - [numpy](https://www.numpy.org/) used under the [BSD license](https://www.numpy.org/license.html#license).
  - [pandas](https://pandas.pydata.org/) used under the [BSD license](http://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html#license).
  - [scikit_learn](https://scikit-learn.org/stable/) used under the [BSD license](https://github.com/scikit-learn/scikit-learn/blob/master/COPYING).
+ - [tabulate](https://bitbucket.org/astanin/python-tabulate) used under the [MIT license](https://bitbucket.org/astanin/python-tabulate/src/master/LICENSE).
  - [tensorflow v1](https://www.tensorflow.org/) used under the [Apache v2 License](https://github.com/tensorflow/tensorflow/blob/master/LICENSE).
  - [textblob](https://textblob.readthedocs.io/en/dev/) used under the [MIT license](https://textblob.readthedocs.io/en/dev/license.html).
  - [wandb](https://www.wandb.com/) used under the [MIT license](https://github.com/wandb/client/blob/master/LICENSE).

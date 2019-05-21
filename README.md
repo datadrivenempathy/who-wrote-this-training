@@ -129,6 +129,17 @@ Please provide unit tests where possible and conform to the [Google Python and d
 <br>
 <br>
 
+Related Projects
+----------------------------------------------------------------------------------------------------
+Note that this is in a series of related projects as linked:
+
+ - [who-wrote-this-training](https://github.com/datadrivenempathy/who-wrote-this-training): logic for machine learning.
+ - [who-wrote-this-server](https://github.com/datadrivenempathy/who-wrote-this-server): web application to demo the model.
+ - [who-wrote-this-news-crawler](https://github.com/datadrivenempathy/who-wrote-this-news-crawler): crawler to record RSS feeds.
+
+<br>
+<br>
+
 License and Open Source Libraries Used
 ----------------------------------------------------------------------------------------------------
 This project is made available under the [MIT license](https://opensource.org/licenses/MIT) as described in `LICENSE.txt`. It uses the following open source libraries internally:

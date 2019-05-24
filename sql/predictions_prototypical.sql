@@ -1,4 +1,3 @@
-DROP TABLE prototypical;
 CREATE TABLE prototypical AS
 SELECT
     incorrect_predictions_selected.prediction AS prediction,

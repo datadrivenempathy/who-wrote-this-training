@@ -1,4 +1,3 @@
-DROP VIEW jaccards;
 CREATE VIEW jaccards AS
 SELECT
 	with_totals.source1 AS source1,

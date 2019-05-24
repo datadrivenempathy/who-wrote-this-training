@@ -1,4 +1,3 @@
-DROP VIEW predictions_top_score;
 CREATE VIEW predictions_top_score AS
 SELECT
 	unordered.prediction AS prediction,
@@ -33,7 +32,6 @@ FROM
 ORDER BY predictionScore DESC;
 
 
-DROP VIEW incorrect_predictions;
 CREATE VIEW incorrect_predictions AS
 SELECT
 	prediction,

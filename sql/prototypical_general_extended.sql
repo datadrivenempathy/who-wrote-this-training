@@ -1,5 +1,3 @@
-DROP TABLE prototypical_extended;
-
 CREATE TABLE prototypical_extended AS
 SELECT
     prediction,

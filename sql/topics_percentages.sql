@@ -1,4 +1,3 @@
-DROP VIEW topics_percentages;
 CREATE VIEW topics_percentages AS
 SELECT
 	percentages.maxTopic AS maxTopic,

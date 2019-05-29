@@ -1,0 +1,282 @@
+[
+  {
+    "op": "core/column-reorder",
+    "description": "Reorder columns",
+    "columnNames": [
+      "node - notes",
+      "node - config",
+      "node - summaryMetrics"
+    ]
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column method at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['method']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "method",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['method']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column lstmSize at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['lstmSize']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "lstmSize",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['lstmSize']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column numWords at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['numWords']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "numWords",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['numWords']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column corpusCol at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['corpusCol']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "corpusCol",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['corpusCol']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column maxSeqLen at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['maxSeqLen']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "maxSeqLen",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['maxSeqLen']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column sourceCol at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['sourceCol']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "sourceCol",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['sourceCol']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column tokensCol at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['tokensCol']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "tokensCol",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['tokensCol']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column dropoutRate at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['dropoutRate']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "dropoutRate",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['dropoutRate']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column sourceIdCol at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['sourceIdCol']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "sourceIdCol",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['sourceIdCol']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column tokenVectorCol at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['tokenVectorCol']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "tokenVectorCol",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['tokenVectorCol']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column kernelRegPenalty at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['kernelRegPenalty']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "kernelRegPenalty",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['kernelRegPenalty']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column sourceIdVectorCol at index 2 based on column node - config using expression jython:import json\nreturn json.loads(value)['sourceIdVectorCol']['value']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "sourceIdVectorCol",
+    "columnInsertIndex": 2,
+    "baseColumnName": "node - config",
+    "expression": "jython:import json\nreturn json.loads(value)['sourceIdVectorCol']['value']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column node - config",
+    "columnName": "node - config"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column acc at index 14 based on column node - summaryMetrics using expression jython:import json\nreturn json.loads(value)['acc']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "acc",
+    "columnInsertIndex": 14,
+    "baseColumnName": "node - summaryMetrics",
+    "expression": "jython:import json\nreturn json.loads(value)['acc']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column valAcc at index 14 based on column node - summaryMetrics using expression jython:import json\nreturn json.loads(value)['val_acc']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "valAcc",
+    "columnInsertIndex": 14,
+    "baseColumnName": "node - summaryMetrics",
+    "expression": "jython:import json\nreturn json.loads(value)['val_acc']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column epoch at index 14 based on column node - summaryMetrics using expression jython:import json\nreturn json.loads(value)['epoch']",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "epoch",
+    "columnInsertIndex": 14,
+    "baseColumnName": "node - summaryMetrics",
+    "expression": "jython:import json\nreturn json.loads(value)['epoch']",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column node - summaryMetrics",
+    "columnName": "node - summaryMetrics"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column isFix at index 1 based on column node - notes using expression jython:return '-fix' in value",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "node - notes",
+          "expression": "value",
+          "columnName": "node - notes",
+          "invert": true,
+          "selection": [],
+          "selectNumber": false,
+          "selectDateTime": false,
+          "selectBoolean": false,
+          "omitBlank": false,
+          "selectBlank": true,
+          "omitError": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "newColumnName": "isFix",
+    "columnInsertIndex": 1,
+    "baseColumnName": "node - notes",
+    "expression": "jython:return '-fix' in value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column node - notes to name",
+    "oldColumnName": "node - notes",
+    "newColumnName": "name"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column name",
+    "columnName": "name"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column isFix",
+    "columnName": "isFix"
+  },
+  {
+    "op": "core/column-reorder",
+    "description": "Reorder columns",
+    "columnNames": [
+      "kernelRegPenalty",
+      "dropoutRate",
+      "maxSeqLen",
+      "numWords",
+      "lstmSize",
+      "method",
+      "epoch",
+      "valAcc",
+      "acc"
+    ]
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column acc to trainAcc",
+    "oldColumnName": "acc",
+    "newColumnName": "trainAcc"
+  }
+]

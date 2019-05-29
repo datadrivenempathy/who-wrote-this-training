@@ -5,7 +5,7 @@
     "dropoutRate": 0,
     "kernelRegPenalty": 0.01,
     "method": "occurrence",
-    "numWords": 30000,
+    "numWords": 10000,
     "sourceCol": "source",
     "sourceIdCol": "sourceId",
     "sourceIdVectorCol": "sourceIdVector",

@@ -79,7 +79,8 @@ class RunSingleTest(unittest.TestCase):
             self.__config_occ,
             self.__project_name,
             self.__run_name,
-            self.__conn
+            self.__conn,
+            True
         )
 
         results = pandas.read_sql('SELECT count(1) AS cnt FROM predictions', self.__conn)
@@ -91,7 +92,8 @@ class RunSingleTest(unittest.TestCase):
             self.__config_lstm,
             self.__project_name,
             self.__run_name,
-            self.__conn
+            self.__conn,
+            True
         )
 
         results = pandas.read_sql('SELECT count(1) AS cnt FROM predictions', self.__conn)

@@ -62,8 +62,52 @@ class DataLoader:
         self.__conn = conn
         self.__db_loc = db_loc
 
-    def load_data(self, partition_test=False, remove_ad_here=True, remove_self_ref=True,
-            remove_article_place_info=True):
+    def clean_input_text(self, target_text, source, remove_ad_here=True,
+        remove_related_stories=True, remove_self_ref=True, remove_article_place_info=True,
+        remove_the_latest=True):
+        """Clean input a piece of input text:
+
+        Args:
+            source: The name of the news source that produced the given target text.
+            target_text: The text to clean.
+            remove_ad_here: Flag indicating if advertising string should be removed that could
+                give away the publisher identity. Defaults to True.
+            remove_self_ref: Flag controlling removal of references to the publisher from the title
+                and description. Defaults to True.
+            remove_article_place_info: Remove article placement metadata text that could give
+                away the publisher identity. Deafults to True.
+            remove_the_latest: Flag indicating if the string "the lastest" which may be identifying
+                of some sources should be removed.
+        Returns:
+            The cleaned text as a string.
+        """
+        target_text = target_text.lower()
+        source = source.lower()
+
+        if remove_ad_here:
+            target_text = target_text.replace('advertise here', '').replace(']]>', '')
+
+        if remove_self_ref:
+            target_text = target_text.replace(source, '')
+
+        if remove_related_stories:
+            target_text = target_text.replace('related stories', '')
+
+        if remove_article_place_info:
+            target_text = re.sub(
+                r'\(.* column, .* story, link\)',
+                '',
+                target_text
+            )
+
+        if remove_the_latest:
+            target_text = target_text.replace('the latest', '')
+
+        return target_text
+
+    def load_data(self, partition_test=False, remove_ad_here=True, remove_related_stories=True,
+            remove_self_ref=True, remove_article_place_info=True, remove_the_latest=True,
+            output_col_title='title', output_col_description='description'):
         """Load a data frame with article data.
 
         Args:
@@ -71,10 +115,16 @@ class DataLoader:
                 to use a partitioning already found within the data. Deafults to False.
             remove_ad_here: Flag indicating if advertising string should be removed that could
                 give away the publisher identity. Defaults to True.
-            remove_self_ref: Remove references to the publisher from the title and description.
-                Defaults to True.
+            remove_self_ref: Flag controlling removal of references to the publisher from the title
+                and description. Defaults to True.
             remove_article_place_info: Remove article placement metadata text that could give
                 away the publisher identity. Deafults to True.
+            remove_the_latest: Flag indicating if the string "the lastest" which may be identifying
+                of some sources should be removed.
+            output_col_title: The name of the column where the cleaned title should be written.
+                Defaults to title (overwrite existing title col).
+            output_col_description: The name of the column where the cleaned description should be
+                written. Defaults to description (overwrite existing title description).
         Returns:
             Data frame with title, description, and source (with other optional fields depending
             on arguments) describing articles.
@@ -92,30 +142,25 @@ class DataLoader:
                 lambda x: self.__get_set_assignment()
             )
 
-        if remove_ad_here:
-            data_frame['description'] = data_frame['description'].apply(
-                lambda x: x.replace('Advertise here', '').replace(']]>', '')
-            )
+        cleanup_lambda = lambda text, source: self.clean_input_text(
+            text,
+            source,
+            remove_ad_here=remove_ad_here,
+            remove_related_stories=remove_related_stories,
+            remove_self_ref=remove_self_ref,
+            remove_article_place_info=remove_article_place_info,
+            remove_the_latest=remove_the_latest
+        )
 
-        if remove_self_ref:
-            data_frame['title'] = data_frame.apply(
-                lambda x: x['title'].replace(x['source'], ''),
-                axis=1
-            )
+        data_frame[output_col_title] = data_frame.apply(
+            lambda x: cleanup_lambda(x['title'], x['source']),
+            axis=1
+        )
 
-            data_frame['description'] = data_frame.apply(
-                lambda x: x['description'].replace(x['source'], ''),
-                axis=1
-            )
-
-        if remove_article_place_info:
-            data_frame['description'] = data_frame['description'].apply(
-                lambda x: re.sub(
-                    r'\(.* column, .* story, link\)',
-                    '',
-                    x
-                )
-            )
+        data_frame[output_col_description] = data_frame.apply(
+            lambda x: cleanup_lambda(x['description'], x['source']),
+            axis=1
+        )
 
         return data_frame
 

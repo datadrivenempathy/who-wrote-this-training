@@ -41,6 +41,7 @@ class Tokenizer:
         self.__vector_col = vector_col
         self.__num_words = num_words
         self.__vectorizer = vectorizer
+        self.__inner_tokenizer = None
 
     def tokenize(self, data_frame, overwrite_in_place=True):
         """Interpret and tokenize input text.
@@ -68,6 +69,8 @@ class Tokenizer:
         tokenizer.fit_on_texts(data_frame[output_col])
         data_frame[self.__tokens_col] = tokenizer.texts_to_sequences(data_frame[output_col])
 
+        self.__inner_tokenizer = tokenizer
+
     def convert_tokens_to_vector(self, data_frame):
         """Create a vectorization of tokens.
 
@@ -89,3 +92,11 @@ class Tokenizer:
         """
         soup = bs4.BeautifulSoup(html, 'lxml')
         return soup.text
+
+    def get_inner_tokenizer(self):
+        """Get the third party tokenizer utility used to tokenzie the text.
+
+        Returns:
+            keras.preprocessing.text.Tokenizer used to fit the text.
+        """
+        return self.__inner_tokenizer

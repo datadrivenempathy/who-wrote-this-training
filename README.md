@@ -100,6 +100,12 @@ If persisting results of the model (using `run_single.py`), the predictions will
 For the JSON input files, running `run_single.py` expects a single JSON object with the configuration as demonstrated in `condfig/selected_network.json`. Meanwhile, running `run_set.py` expects a root object with the attribute `configs` which itself contains an array of objects with attributes `name` (the name of the configuration, will be reported as the "run name" in W&B) and `config` (the configuration as described above). See `config/configs_combined.json` for an example. One may also optionally include `project` in the root object for `run_set.py` which will override the name of the W&B project with which the run will be associated.
 
 <br>
+
+**Lime**
+
+Note that LIME data is generated through the notebook at `notebook/Run Manually.ipnyb`.
+
+<br>
 <br>
 
 Testing
@@ -150,6 +156,7 @@ This project is made available under the [MIT license](https://opensource.org/li
  - [beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/) used under the [MIT license](https://opensource.org/licenses/MIT).
  - [gensim](https://radimrehurek.com/gensim/) used under the [LGPLv2 license](https://github.com/RaRe-Technologies/gensim/blob/develop/COPYING).
  - [Keras](https://keras.io/) used under the [MIT license](https://github.com/keras-team/keras/blob/master/LICENSE).
+ - [lime](https://github.com/marcotcr/lime) used under the [BSD license](https://github.com/marcotcr/lime/blob/master/LICENSE).
  - [lxml](https://lxml.de/) used under the [BSD license](https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt).
  - [numpy](https://www.numpy.org/) used under the [BSD license](https://www.numpy.org/license.html#license).
  - [pandas](https://pandas.pydata.org/) used under the [BSD license](http://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html#license).
